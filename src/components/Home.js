@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import introbg from "../assets/img/introbg.jpg"
+import img1 from '../assets/img/introbg.jpg';
 import img2 from "../assets/img/intro-img.svg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AOS from "aos";
@@ -41,8 +41,7 @@ const HomeContainer = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
-  background: #f5f8fd  center top no-repeat;
-  background-image: url("../assets/img/introbg.jpg");
+  background: #f5f8fd url(${img1});
   background-size: cover;
   padding-top: 110px;
 }
