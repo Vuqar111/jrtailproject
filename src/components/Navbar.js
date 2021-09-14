@@ -79,8 +79,7 @@ const Nav = () => {
   );
 };
 
-//hover #1bb1dc
-//#555186
+
 const NavContainer = styled.nav`
   .header {
     width: 100%;
@@ -91,7 +90,7 @@ const NavContainer = styled.nav`
     transition: all 0.5s;
     z-index: 997;
     height: auto !important;
-    background: #fff;
+    /* background: #fff; */
   }
   .header img {
     max-width: 40px;
