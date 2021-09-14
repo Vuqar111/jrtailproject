@@ -38,6 +38,7 @@
     "react-script": "^2.0.5",
     "react-scripts": "^4.0.3",
     "react-scroll": "^1.8.4",
+    "react-scrolling-nav": "^1.1.5",
     "react-scrollspy": "^3.4.3",
     "react-scrollspy-nav": "^1.2.4",
     "react-slick": "^0.28.1",

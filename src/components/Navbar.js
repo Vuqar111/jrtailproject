@@ -2,18 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { links, icons } from "./data";
-import {
-  FaBars,
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+import {FaBars} from "react-icons/fa";
+import Scrollspy from 'react-scrollspy'
 import ScrollspyNav from "react-scrollspy-nav";
 import logo from "../images/jrlogo.png";
-import { FaBeer } from "react-icons/fa";
 
-const Nav = () => {
+const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const [showlink, setshowlink] = useState(false);
   window.addEventListener("scroll", changenavbar);
@@ -49,15 +43,48 @@ const Nav = () => {
                     : "links-container"
                 }`}
               >
+            
+
+
                 <ul className="links">
-                  {links.map((link) => {
-                    const { id, url, text } = link;
-                    return (
-                      <li key={id}>
-                        <a href={url}>{text}</a>
+                
+                 <ScrollspyNav scrollTargetIds={['about','services','pricing','footer']}
+                 scrollDuration="50"
+                  activeNavClass="menuactive"
+                 >
+                   
+<span className="firstclass">
+
+
+               
+                   <li>
+                       
+                        <a href="/">Ana Səhifə</a>
+                        
                       </li>
-                    );
-                  })}
+                      <li>
+                       
+                       <a href="#about">Haqqımızda</a>
+                       
+                     </li>
+                     <li>
+                       
+                       <a href="#services">Xidmətlərimiz</a>
+                       
+                     </li>
+                     <li>
+                       
+                       <a href="#pricing">Qiymətlərimiz</a>
+                       
+                     </li>
+                     <li>
+                       
+                       <a href="#footer">Əlaqə</a>
+                       
+                     </li>
+                     </span>
+                     </ScrollspyNav>
+                 
 
                   <span className="iconspan">
                     {icons.map((icon) => {
@@ -70,6 +97,7 @@ const Nav = () => {
                     })}
                   </span>
                 </ul>
+                
               </div>
             </div>
           </nav>
@@ -115,7 +143,20 @@ const NavContainer = styled.nav`
   a {
     text-decoration: none;
   }
+.menuactive  {
+  color: red;
+}
 
+.firstclass {
+  display: flex;
+  flex-direction: row;
+}
+@media screen and (max-width: 756px){
+  .firstclass {
+    display: flex;
+    flex-direction: column;
+  }
+}
   .iconspan {
     display: flex;
     flex-direction: row;
@@ -124,6 +165,7 @@ const NavContainer = styled.nav`
   }
   /*  global classes */
 
+   
   /* section */
   .section {
     width: 90vw;
@@ -182,6 +224,7 @@ const NavContainer = styled.nav`
     transition: var(--transition);
   }
   .show-container {
+    background: #fff;
     height: 15rem;
   }
   @media screen and (min-width: 800px) {
@@ -206,6 +249,7 @@ const NavContainer = styled.nav`
       display: flex;
       margin-top: 10px;
     }
+    
     .links a {
       padding: 0px;
       margin: 0 0.5rem;
@@ -213,18 +257,18 @@ const NavContainer = styled.nav`
     .links a:hover {
       background: transparent;
     }
-    .social-icons {
+    .icons {
       display: flex;
     }
-    .social-icons a {
+    .icons a {
       margin: 0 0.5rem;
       color: var(--clr-primary-5);
       transition: var(--transition);
     }
-    .social-icons a:hover {
+    .icons a:hover {
       color: var(--clr-primary-7);
     }
   }
 `;
 
-export default Nav;
+export default Navbar;

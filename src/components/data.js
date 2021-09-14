@@ -66,17 +66,17 @@ const data = {
       text: <FaTwitter/>,
   },
   {
-    id: 1,
+    id: 2,
     url: '/',
     text: <FaInstagram/>,
   },
   {
-    id: 1,
+    id: 3,
     url: '/',
     text: <FaLinkedin/>,
   },
   {
-    id: 1,
+    id: 4,
       url: '/',
       text: <FaFacebook/>,
   }
