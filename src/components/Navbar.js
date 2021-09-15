@@ -39,11 +39,11 @@ const Navbar = () => {
 
       <nav id="navbar" className={hamburger ? 'navbar-mobile order-last order-lg-0' : 'navbar order-last order-lg-0'}>
         <ul>
-          <li><a className="nav-link scrollto active" href="#hero">Ana Səhifə</a></li>
-          <li><a className="nav-link scrollto" href="#about">Haqqımızda</a></li>
-          <li><a className="nav-link scrollto" href="#services">Xidmətlərimiz</a></li>
-          <li><a className="nav-link scrollto " href="#pricing">Qiymətlərimiz</a></li>
-          <li><a className="nav-link scrollto" href="#footer">Əlaqə</a></li>
+          <li><a className="nav-link scrollto active" onClick={closeMobileMenu} href="#hero">Ana Səhifə</a></li>
+          <li><a className="nav-link scrollto" onClick={closeMobileMenu} href="#about">Haqqımızda</a></li>
+          <li><a className="nav-link scrollto" onClick={closeMobileMenu} href="#services">Xidmətlərimiz</a></li>
+          <li><a className="nav-link scrollto " onClick={closeMobileMenu} href="#pricing">Qiymətlərimiz</a></li>
+          <li><a className="nav-link scrollto" onClick={closeMobileMenu} href="#footer">Əlaqə</a></li>
    
         </ul>
 
