@@ -84,7 +84,8 @@ export default Services;
 const ServicesContainer = styled.div`
 
 
-
+padding: 15px;
+margin-top: 35px;
 
 .section-header h3 {
   font-size: 36px;

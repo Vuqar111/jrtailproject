@@ -11,9 +11,11 @@ const Navbar = () => {
   const [stickynavbar, setstickyNavbar] = useState(false);
   const [hamburger, setHamburger] = useState(false)
 
-  const handleClick = () => setHamburger(!hamburger)
+  const handleClick = () => {
+   setHamburger(!hamburger);
+  } 
   const closeMobileMenu = () => setHamburger(false)
- 
+  
   window.addEventListener("scroll", changenavbar);
 
   function changenavbar() {
@@ -41,15 +43,15 @@ const Navbar = () => {
           <li><a className="nav-link scrollto" href="#about">Haqqımızda</a></li>
           <li><a className="nav-link scrollto" href="#services">Xidmətlərimiz</a></li>
           <li><a className="nav-link scrollto " href="#pricing">Qiymətlərimiz</a></li>
-          <li><a className="nav-link scrollto" href="#contact">Əlaqə</a></li>
+          <li><a className="nav-link scrollto" href="#footer">Əlaqə</a></li>
    
         </ul>
 
-       
+        
       
    
 
-      <div className="social-links">
+      <div className={hamburger ? 'social-links active' : 'social-links'}>
         <a href="#" className="twitter"><i className="fab fa-twitter"></i></a>
         <a href="#" className="facebook"><i className="fab fa-linkedin"></i></a>
         <a href="#" className="linkedin"><i className="fab fa-facebook"></i></a>
@@ -57,7 +59,7 @@ const Navbar = () => {
       </div>
       <div>
         <i className={hamburger ? 'fas fa-times mobile-nav-toggle' : 'fas fa-bars mobile-nav-toggle'} onClick={handleClick}></i>
-        </div>
+        </div>  
     </nav>
     </div>
   </header>
@@ -76,16 +78,12 @@ const NavContainer = styled.nav`
   z-index: 997;
   height: 90px;
 }
-
-
-
 .sticky.active {
   z-index: 1500;
   background: #fff;
   height: 70px;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.3);
 }
-
 #header .logo {
   font-size: 36px;
   margin: 0;
@@ -94,36 +92,29 @@ const NavContainer = styled.nav`
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-
 #header .logo a {
   color: #413e66;
 }
-
 #header .logo img {
   max-height: 40px;
 }
-
 #header .social-links {
   margin: 0 0 0 20px;
-  display: inline-flex;
+  display: fixed;
   align-items: center;
   justify-content: center;
 }
-
+#header .social-links.active {
+  display: none;
+}
+/*
 #header .social-links a {
   color: #1bb1dc;
   transition: 0.3s;
   line-height: 0;
   margin-left: 15px;
 }
-
-#header .social-links a i {
-  line-height: 0;
-}
-
-#header .social-links a:hover {
-  color: #1bb1dc;
-}
+*/
 
 @media (max-width: 992px) {
   #header .social-links {
@@ -137,12 +128,6 @@ const NavContainer = styled.nav`
   }
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/**
-* Desktop Navigation 
-*/
 .navbar {
   padding: 0;
 }
@@ -184,22 +169,16 @@ const NavContainer = styled.nav`
 }
 
 
-
+.social-links.active {
+  display: none;
+}
 
 
 
 @media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
-  .navbar .dropdown .dropdown:hover > ul {
-    left: -100%;
-  }
+
 }
 
-/**
-* Mobile Navigation 
-*/
 .mobile-nav-toggle {
   color: #413e66;
   font-size: 28px;
@@ -209,7 +188,7 @@ const NavContainer = styled.nav`
   transition: 0.5s;
 }
 
-.mobile-nav-toggle.bi-x {
+.mobile-nav-toggle.fa-times {
   color: #fff;
 }
 
@@ -220,6 +199,7 @@ const NavContainer = styled.nav`
   .navbar ul {
     display: none;
   }
+
 }
 
 .navbar-mobile {
@@ -266,12 +246,6 @@ const NavContainer = styled.nav`
 .navbar-mobile .getstarted {
   margin: 15px;
 }
-
-
-
-
-
-
 `;
 
 export default Navbar;
