@@ -8,267 +8,270 @@ import ScrollspyNav from "react-scrollspy-nav";
 import logo from "../images/jrlogo.png";
 
 const Navbar = () => {
-  const [navbar, setNavbar] = useState(false);
-  const [showlink, setshowlink] = useState(false);
+  const [stickynavbar, setstickyNavbar] = useState(false);
+  const [hamburger, setHamburger] = useState(false)
+
+  const handleClick = () => setHamburger(!hamburger)
+  const closeMobileMenu = () => setHamburger(false)
+ 
   window.addEventListener("scroll", changenavbar);
 
   function changenavbar() {
     if (window.scrollY >= 80) {
-      setNavbar(true);
+      setstickyNavbar(true);
     } else {
-      setNavbar(false);
+      setstickyNavbar(false);
     }
   }
 
   return (
     <NavContainer>
-      <header id="" className={navbar ? "header active" : "header"}>
-        <div className="container d-flex align-items-center">
-          <nav id="navbar" className="navbar order-last order-lg-0">
-            <div className="nav-center">
-              <div className="nav-header">
-                <img src={logo} className="logo" alt="logo" />
-                <button
-                  className="nav-toggle"
-                  onClick={() => setshowlink(!showlink)}
-                >
-                  <FaBars />
-                </button>
-              </div>
 
-              <div
-                className={`${
-                  showlink
-                    ? "links-container show-container"
-                    : "links-container"
-                }`}
-              >
-            
+      
+  <header id="header" className={stickynavbar ? 'sticky active fixed-top d-flex align-items-center header-transparent' : 'sticky fixed-top d-flex align-items-center header-transparent'}>
+    <div className="container d-flex align-items-center">
 
+      
+       
+       <a href="index.html" className="logo me-auto"><img src={logo} alt="" className="img-fluid" /></a>
 
-                <ul className="links">
-                
-                 <ScrollspyNav scrollTargetIds={['about','services','pricing','footer']}
-                 scrollDuration="50"
-                  activeNavClass="menuactive"
-                 >
-                   
-<span className="firstclass">
+      <nav id="navbar" className={hamburger ? 'navbar order-last order-lg-0' : 'navbar-mobile order-last order-lg-0'}>
+        <ul>
+          <li><a className="nav-link scrollto active" href="#hero">Ana Səhifə</a></li>
+          <li><a className="nav-link scrollto" href="#about">Haqqımızda</a></li>
+          <li><a className="nav-link scrollto" href="#services">Xidmətlərimiz</a></li>
+          <li><a className="nav-link scrollto " href="#pricing">Qiymətlərimiz</a></li>
+          <li><a className="nav-link scrollto" href="#contact">Əlaqə</a></li>
+   
+        </ul>
 
+       
+      
+   
 
-               
-                   <li>
-                       
-                        <a href="/">Ana Səhifə</a>
-                        
-                      </li>
-                      <li>
-                       
-                       <a href="#about">Haqqımızda</a>
-                       
-                     </li>
-                     <li>
-                       
-                       <a href="#services">Xidmətlərimiz</a>
-                       
-                     </li>
-                     <li>
-                       
-                       <a href="#pricing">Qiymətlərimiz</a>
-                       
-                     </li>
-                     <li>
-                       
-                       <a href="#footer">Əlaqə</a>
-                       
-                     </li>
-                     </span>
-                     </ScrollspyNav>
-                 
-
-                  <span className="iconspan">
-                    {icons.map((icon) => {
-                      const { id, url, text } = icon;
-                      return (
-                        <li key={id}>
-                          <a href={url}>{text}</a>
-                        </li>
-                      );
-                    })}
-                  </span>
-                </ul>
-                
-              </div>
-            </div>
-          </nav>
+      <div className="social-links">
+        <a href="#" className="twitter"><i className="fab fa-twitter"></i></a>
+        <a href="#" className="facebook"><i className="fab fa-linkedin"></i></a>
+        <a href="#" className="linkedin"><i className="fab fa-facebook"></i></a>
+        <a href="#" className="instagram"><i className="fab fa-instagram"></i></a>
+      </div>
+      <div>
+        <i className={hamburger ? 'fas fa-bars mobile-nav-toggle' : 'fas fa-times mobile-nav-toggle'} onClick={handleClick}></i>
         </div>
-      </header>
+    </nav>
+    </div>
+  </header>
+
+  
+      
     </NavContainer>
   );
 };
 
 
 const NavContainer = styled.nav`
-  .header {
-    width: 100%;
-    display: flex;
-    position: fixed;
-    top: 0;
-    align-items: center;
-    transition: all 0.5s;
-    z-index: 997;
-    height: auto !important;
-    /* background: #fff; */
-  }
-  .header img {
-    max-width: 40px;
-    min-width: 40px;
-    width: 100%;
-    background-size: cover;
-  }
-
-  .img-style {
-    width: 55px;
-    height: 55px;
-  }
-
-  .header.active {
-    background: #fff;
-    height: auto !important;
-    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.3);
-  }
-  ul {
-    list-style-type: none;
-  }
-  a {
-    text-decoration: none;
-  }
-.menuactive  {
-  color: red;
+ .sticky {
+  background: transparent;
+  transition: all 0.5s;
+  z-index: 997;
+  height: 90px;
 }
 
-.firstclass {
+
+
+.sticky.active {
+  z-index: 1500;
+  background: #fff;
+  height: 70px;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.3);
+}
+
+#header .logo {
+  font-size: 36px;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+#header .logo a {
+  color: #413e66;
+}
+
+#header .logo img {
+  max-height: 40px;
+}
+
+#header .social-links {
+  margin: 0 0 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header .social-links a {
+  color: #1bb1dc;
+  transition: 0.3s;
+  line-height: 0;
+  margin-left: 15px;
+}
+
+#header .social-links a i {
+  line-height: 0;
+}
+
+#header .social-links a:hover {
+  color: #1bb1dc;
+}
+
+@media (max-width: 992px) {
+  #header .social-links {
+    margin: 0 15px 0 0;
+  }
+}
+
+@media (max-width: 992px) {
+  #header .logo {
+    font-size: 28px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/**
+* Desktop Navigation 
+*/
+.navbar {
+  padding: 0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: row;
+  list-style: none;
+  align-items: center;
 }
-@media screen and (max-width: 756px){
-  .firstclass {
-    display: flex;
-    flex-direction: column;
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a, .navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 24px;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  color: #413e66;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.navbar a i, .navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+  color: #1bb1dc;
+}
+
+
+
+
+
+
+@media (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+  .navbar .dropdown .dropdown:hover > ul {
+    left: -100%;
   }
 }
-  .iconspan {
-    display: flex;
-    flex-direction: row;
-  }
-  @media screen and (min-width: 800px) {
-  }
-  /*  global classes */
 
-   
-  /* section */
-  .section {
-    width: 90vw;
-    margin: 0 auto;
-    max-width: var(--max-width);
-  }
+/**
+* Mobile Navigation 
+*/
+.mobile-nav-toggle {
+  color: #413e66;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  line-height: 0;
+  transition: 0.5s;
+}
 
-  @media screen and (min-width: 992px) {
-    .section {
-      width: 95vw;
-    }
-  }
+.mobile-nav-toggle.bi-x {
+  color: #fff;
+}
 
-  .nav-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-  }
-  .nav-toggle {
-    font-size: 1.5rem;
-    color: var(--clr-primary-5);
-    background: transparent;
-    border-color: transparent;
-    transition: var(--transition);
-    cursor: pointer;
-  }
-  .nav-toggle:hover {
-    color: var(--clr-primary-1);
-    transform: rotate(90deg);
-  }
-  .icons {
-    display: none;
-  }
-  .logo {
-    height: 40px;
-  }
-  .links a {
-    color: var(--clr-grey-3);
-    font-size: 1rem;
-    text-transform: capitalize;
-    letter-spacing: var(--spacing);
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
     display: block;
-    padding: 0.8rem 1rem;
-    transition: var(--transition);
   }
-  .links a:hover {
-    color: var(--clr-primary-5);
-  }
-  .social-icons {
+  .navbar ul {
     display: none;
   }
-  .links-container {
-    height: 0;
-    overflow: hidden;
-    transition: var(--transition);
-  }
-  .show-container {
-    background: #fff;
-    height: 15rem;
-  }
-  @media screen and (min-width: 800px) {
-    .nav-center {
-      max-width: 1170px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem;
-    }
-    .nav-header {
-      padding: 0;
-    }
-    .nav-toggle {
-      display: none;
-    }
-    .links-container {
-      height: auto !important;
-    }
-    .links {
-      display: flex;
-      margin-top: 10px;
-    }
-    
-    .links a {
-      padding: 0px;
-      margin: 0 0.5rem;
-    }
-    .links a:hover {
-      background: transparent;
-    }
-    .icons {
-      display: flex;
-    }
-    .icons a {
-      margin: 0 0.5rem;
-      color: var(--clr-primary-5);
-      transition: var(--transition);
-    }
-    .icons a:hover {
-      color: var(--clr-primary-7);
-    }
-  }
+}
+
+.navbar-mobile {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(45, 43, 70, 0.9);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.navbar-mobile .mobile-nav-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.navbar-mobile ul {
+  display: block;
+  position: absolute;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  padding: 10px 0;
+  background-color: #fff;
+  overflow-y: auto;
+  transition: 0.3s;
+}
+
+.navbar-mobile a {
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #413e66;
+}
+
+.navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
+  color: #1bb1dc;
+}
+
+.navbar-mobile .getstarted {
+  margin: 15px;
+}
+
+
+
+
+
+
 `;
 
 export default Navbar;
