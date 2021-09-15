@@ -35,7 +35,7 @@ const Navbar = () => {
        
        <a href="index.html" className="logo me-auto"><img src={logo} alt="" className="img-fluid" /></a>
 
-      <nav id="navbar" className={hamburger ? 'navbar order-last order-lg-0' : 'navbar-mobile order-last order-lg-0'}>
+      <nav id="navbar" className={hamburger ? 'navbar-mobile order-last order-lg-0' : 'navbar order-last order-lg-0'}>
         <ul>
           <li><a className="nav-link scrollto active" href="#hero">Ana Səhifə</a></li>
           <li><a className="nav-link scrollto" href="#about">Haqqımızda</a></li>
@@ -56,7 +56,7 @@ const Navbar = () => {
         <a href="#" className="instagram"><i className="fab fa-instagram"></i></a>
       </div>
       <div>
-        <i className={hamburger ? 'fas fa-bars mobile-nav-toggle' : 'fas fa-times mobile-nav-toggle'} onClick={handleClick}></i>
+        <i className={hamburger ? 'fas fa-times mobile-nav-toggle' : 'fas fa-bars mobile-nav-toggle'} onClick={handleClick}></i>
         </div>
     </nav>
     </div>
